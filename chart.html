@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">  <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <title></title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+
+$(function () {
+    var xCategories = ['45','46','47','48','49','50','51','52','53','54','55','56','57','58','59','60','61','62','63','64','65','66','67','68','69','70','71','72','73','74','75','76','77','78','79','80','81','82','83','84','85','86','87','88','89','90'];
+    
+    chartOptions ={
+        chart: {
+            type: 'areaspline',
+            renderTo: 'container'
+
+        },
+         exporting: { enabled: false },
+        title: {
+            text: ''
+        },
+        legend: {
+            enabled: false
+            
+        },
+        xAxis: {
+             labels: {
+                step: 2,
+                formatter: function() {
+                    return xCategories[this.value];
+                }
+            },
+
+            startOnTick: true,
+            endOnTick: true,
+            minPadding: 0,
+            maxPadding: 0,
+
+         
+            plotBands: [{ // visualize the from
+                from: 0,
+                to:20,
+                color: 'rgba(172, 173, 168, .2)',
+                 
+            }
+
+          
+
+            ]
+        },
+        yAxis: {
+            title: {
+                text: "Amount"
+            },
+            
+        },
+        tooltip: {
+            enabled:false
+    
+        },
+        credits: {
+            enabled: false
+        },
+        plotOptions: {
+            areaspline: {
+                fillOpacity: 0.3
+            },
+             series: {
+                animation: {
+                    duration: 2000
+                }
+            }
+        },
+        
+        series: [{
+            name: 'Jason Sim',
+            data: [250000, 300000, 350000, 400000, 450000, 500000, 550000, 600000,650000, 700000, 750000,800000, 850000,900000,950000,1000000,1050000,1100000,1150000,1200000,1250000,1050000,900000,750000,600000,450000,300000,150000,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            color: '#FFC515'
+        }]
+    };
+
+    chart = new Highcharts.Chart(chartOptions);
+
+     $( "#slider-range-min3").slider({
+      range: "min",
+      value: 6,
+      min: 1,
+      max: 50,
+       slide: function( event, ui ) {
+        $( "#expected" ).val(  ui.value );
+        // alert(ui.value)
+        
+      },
+      
+    });
+
+
+     $( "#slider-range-min2" ).slider({
+      range: "min",
+      value: 250000,
+      min: 50000,
+      max: 2500000,
+       slide: function( event, ui ) {
+        $( "#cur_amount" ).val(  ui.value );
+        // alert(ui.value)
+        
+      },
+      
+    });
+
+
+     $( "#slider-range-min1" ).slider({
+      range: "min",
+      value: 65,
+      min: 40,
+      max: 80,
+       slide: function( event, ui ) {
+        $( "#age" ).val(  ui.value );
+        // alert(ui.value)
+        
+      },
+      
+    });
+
+
+    $( "#slider-range-min" ).slider({
+      range: "min",
+      value: 12000,
+      min: 1000,
+      max: 100000,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.value );
+        // alert(ui.value)
+        
+      },
+
+      change:function(event, ui) { 
+        data = [250000, 300000, 350000, 400000, 450000, 500000, 550000, 600000,650000, 700000, 750000,800000, 850000,900000,950000,1000000,1050000,1100000,1150000,1200000,1250000];
+        amount = ui.value * 12;
+        start = 1250000;
+        count = 0;
+        for(start = 1250000; start > 0 ; ){
+            bal = start-amount;
+            if(bal > 0){
+                data.push(bal); 
+                count++;  
+            } 
+            else break;
+            start = bal;
+        }
+
+       chart.xAxis[0].removePlotLine('plotline-1');
+
+       chart.xAxis[0].addPlotLine({
+            value: 21 + count ,
+            width: 1,
+            color: 'red',
+            dashStyle: 'dash',
+            label: { 
+                text: 'Reserves reaches 0 at ' + (66+count), // Content of the label. 
+                align: 'left' // Positioning of the label. 
+            },
+            id: 'plotline-1'
+        });
+
+        count = 20 - count;
+
+
+        for(;count > 0; count--){
+            data.push(0)
+        }
+
+        chart.series[0].setData(data,true);
+
+      
+
+    }
+      
+    });
+    $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+
+
+});
+//]]> 
+
+
+
+
+ 
+
+</script>
+
+
+  
+</head>
+
+<body>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+<div id="header" style="width:100%;">
+    <div id="centered" style="margin: 0 auto; width:100%;">
+         <p>
+      <label for="amount">Monthly spend after retirement:</label>
+      <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+      <div id="slider-range-min"></div>
+    </p>
+
+    <p>
+      <label for="amount">Expected annual rate of return: </label>
+      <input type="text" size="2" id="expected" readonly style="border:0; color:#f6931f; font-weight:bold;" value="6">%
+          <div id="slider-range-min3"></div>
+    </p>
+
+    <p>
+      <label for="amount">Current amount in fund: </label>
+      <input type="text" id="curamount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="250000">
+          <div id="slider-range-min2"></div>
+    </p>
+
+    <p>
+      <label for="amount">Target retirement age: </label>
+      <input type="text" id="age" readonly style="border:0; color:#f6931f; font-weight:bold;" value="65">
+          <div id="slider-range-min1"></div>
+    </p>
+    </div>
+</div>
+
+
+  
+</body>
+
+</html>
+
