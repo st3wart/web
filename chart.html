@@ -9,16 +9,6 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
-<style>
-body{
-  font-size: 20pt;
-
-}
-
-
-</style>
-
-
 <script type='text/javascript'>//<![CDATA[
 
 $(function () {
@@ -57,11 +47,7 @@ $(function () {
                 to:20,
                 color: 'rgba(172, 173, 168, .2)',
                  
-            }
-
-          
-
-            ]
+            }]
         },
         yAxis: {
             title: {
@@ -96,7 +82,20 @@ $(function () {
 
     chart = new Highcharts.Chart(chartOptions);
 
-     $( "#slider-range-min3").slider({
+    $( "#slider-monthly-contributions").slider({
+      range: "min",
+      value: 4000,
+      min: 100,
+      max: 100000,
+       slide: function( event, ui ) {
+        $( "#contributions" ).val(  ui.value );
+        // alert(ui.value)
+        
+      },
+      
+    });
+
+     $( "#slider-expected-return").slider({
       range: "min",
       value: 6,
       min: 1,
@@ -110,7 +109,7 @@ $(function () {
     });
 
 
-     $( "#slider-range-min2" ).slider({
+     $( "#slider-current-fund" ).slider({
       range: "min",
       value: 250000,
       min: 50000,
@@ -124,7 +123,7 @@ $(function () {
     });
 
 
-     $( "#slider-range-min1" ).slider({
+     $( "#slider-retirement-age" ).slider({
       range: "min",
       value: 65,
       min: 40,
@@ -138,7 +137,7 @@ $(function () {
     });
 
 
-    $( "#slider-range-min" ).slider({
+    $( "#slider-monthly-spend" ).slider({
       range: "min",
       value: 12000,
       min: 1000,
@@ -186,22 +185,17 @@ $(function () {
         }
 
         chart.series[0].setData(data,true);
-
       
 
     }
       
     });
-    $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
+    // $( "#amount" ).val( "$" + $( "#slider-range-min" ).slider( "value" ) );
 
 
 });
 //]]> 
 
-
-
-
- 
 
 </script>
 
@@ -213,34 +207,39 @@ $(function () {
   <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 
-<div id="container" style="min-width: 310px; height: 800px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; min-height: 500px;  margin: 0 auto"></div>
 
 <div id="header" style="width:100%;">
-    <div id="centered" style="margin: 0 auto; width:100%;">
-         <p>
-      <label for="amount">Monthly spend after retirement:</label>
-      <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-      <div id="slider-range-min"></div>
-    </p>
+  <p>
+    <label for="amount">Monthly spend after retirement:</label>
+    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="12000">
+    <div id="slider-monthly-spend"></div>
+  </p>
+
+  <p>
+    <label for="amount">Monthly contributions:</label>
+    <input type="text" id="contributions" readonly style="border:0; color:#f6931f; font-weight:bold;" value="4000">
+    <div id="slider-monthly-contributions"></div>
+  </p>
 
     <p>
       <label for="amount">Expected annual rate of return: </label>
       <input type="text" size="2" id="expected" readonly style="border:0; color:#f6931f; font-weight:bold;" value="6">%
-          <div id="slider-range-min3"></div>
+          <div id="slider-expected-return"></div>
     </p>
 
     <p>
       <label for="amount">Current amount in fund: </label>
       <input type="text" id="curamount" readonly style="border:0; color:#f6931f; font-weight:bold;" value="250000">
-          <div id="slider-range-min2"></div>
+          <div id="slider-current-fund"></div>
     </p>
 
     <p>
       <label for="amount">Target retirement age: </label>
       <input type="text" id="age" readonly style="border:0; color:#f6931f; font-weight:bold;" value="65">
-          <div id="slider-range-min1"></div>
+          <div id="slider-retirement-age"></div>
     </p>
-    </div>
+    
 </div>
 
 
