@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  
+  
+
+  
+  
+  
+
+  
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  <style type="text/css">
+    
+  </style>
+
+  <title></title>
+
+  
+    
+
+
+
+
+<script type='text/javascript'>//<![CDATA[
+
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'area'
+        },
+        credits:{
+            enabled: false
+        },
+        exporting:{
+            enabled: false
+        },
+        title: {
+            text: 'Projected returns'
+        },
+       
+        xAxis: {
+            categories: ['2016', '2020', '2024', '2028', '2032', '2036', '2040'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+            title: {
+                text: 'Total returns %'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value / 100;
+                }
+            }
+        },
+        tooltip: {
+            shared: true,
+            valueSuffix: ' millions'
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+            name: 'Singapore Malaysia Equity Fund',
+            data: [502, 635, 809, 947, 1402, 3634, 4268]
+        }, {
+            name: 'The Savings Fund (SGD)',
+            data: [106, 107, 111, 133, 221, 767, 1766]
+        }, {
+            name: 'Dual Currency Investment',
+            data: [163, 203, 276, 408, 547, 729, 628]
+        }, {
+            name: 'Structured Deposits',
+            data: [118, 231, 254, 356, 339, 518, 500]
+        }, {
+            name: 'FD',
+            data: [200, 400, 300, 600, 650, 700, 780]
+        }]
+    });
+});
+//]]> 
+
+</script>
+
+  
+</head>
+
+<body>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<div id="container" style="min-width: 310px; height: 600px; margin: 0 auto"></div>
+
+  
+</body>
+
+</html>
+
