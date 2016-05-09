@@ -15,10 +15,91 @@
 
 		<link rel="stylesheet" href="css/demo.css">
 		<style>
-body {    
-    margin: 0 !important;
-    padding: 0 !important;
-}
+			body {    
+			    margin: 0 !important;
+			    padding: 0 !important;
+			}
+			input[type="search"] {
+			  -webkit-appearance: textfield;
+			  -moz-box-sizing: content-box;
+			  -webkit-box-sizing: content-box;
+			  box-sizing: content-box;
+			}
+			input[type="search"]::-webkit-search-cancel-button,
+			input[type="search"]::-webkit-search-decoration {
+			  -webkit-appearance: none;
+			}
+			.annotated-list input {
+			  border-radius: 25px;
+			  padding: 7px 14px;
+			  background-color: transparent;
+			  border: solid 1px rgba(255, 255, 255, 0.2);
+			  width: 100%;
+			  box-sizing: border-box;
+			  color: #fff;
+			  margin-bottom: 5px;
+			}
+			.annotated-list .sort {
+			  
+			  
+			  padding: 5px 15px;
+			  border-radius: 25px;
+			  border: none;
+			  display: inline-block;
+			  color: #fff;
+			  text-decoration: none;
+			  background-color: rgba(255, 255, 255, 0.05);
+			  margin: 2px 0;
+			}
+			.annotated-list .sort:hover {
+			  text-decoration: none;
+			  background-color: rgba(255, 255, 255, 0.1);
+			}
+			.annotated-list .sort:focus {
+			  outline: none;
+			}
+			.annotated-list .sort:after {
+			  width: 0;
+			  height: 0;
+			  border-left: 4px solid transparent;
+			  border-right: 4px solid transparent;
+			  border-bottom: 4px solid transparent;
+			  content: "";
+			  position: relative;
+			  top: -10px;
+			  right: -4px;
+			}
+			.annotated-list .sort.asc:after {
+			  width: 0;
+			  height: 0;
+			  border-left: 4px solid transparent;
+			  border-right: 4px solid transparent;
+			  border-top: 4px solid #fff;
+			  content: "";
+			  position: relative;
+			  top: 11px;
+			  right: -4px;
+			}
+			.annotated-list .sort.desc:after {
+			  width: 0;
+			  height: 0;
+			  border-left: 4px solid transparent;
+			  border-right: 4px solid transparent;
+			  border-bottom: 4px solid #fff;
+			  content: "";
+			  position: relative;
+			  top: -9px;
+			  right: -4px;
+			}
+			.annotated-list .list {
+			  padding-top: 20px;
+			}
+			.annotated-list .list > div {
+			  padding: 10px 0;
+			  border-top: solid 1px rgba(255, 255, 255, 0.1);
+			}
+
+
 
 		</style>
 	</head>
@@ -26,7 +107,7 @@ body {
 	<body >
 
 		<div class="meny">
-			<h2>More Experiments</h2>
+			<!-- <h2>More Experiments</h2>
 			<ul>
 				<li><a href="http://lab.hakim.se/avgrund/">Avgrund</a></li>
 				<li><a href="http://lab.hakim.se/radar/">Radar</a></li>
@@ -38,7 +119,43 @@ body {
 				<li><a href="http://hakim.se/experiments/css/domtree/">DOM Tree</a></li>
 				<li><a href="http://hakim.se/experiments/css/holobox/">Holobox</a></li>
 				<li><a href="http://hakim.se/experiments/html5/404/netmag.html">404</a></li>
-			</ul>
+			</ul> -->
+			<div class="annotated-list" id="users">
+			    <input class="search" placeholder="Search Customers">
+			    <button class="sort" data-sort="name">Sort by name</button>
+			
+			  
+			    <div class="list"><div>
+			        <h3 class="name">Jason Sim</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Annie Chen</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Marina Tan</h3>
+			        
+			      </div><div>
+			        <h3 class="name">Grace Hoo</h3>
+			    
+			      </div>
+
+			      <div>
+			        <h3 class="name">Peter Lam</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Tan Keng Wai</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Robin Hood</h3>
+			        
+			      </div><div>
+			        <h3 class="name">Scott Anderson</h3>
+			    
+			      </div>
+
+
+			  </div>
+ 		 	</div>
 		</div>
 
 		<!-- <div class="meny-arrow"></div> -->
@@ -53,7 +170,14 @@ body {
 		</div>
 
 		<script src="js/meny.js"></script>
+		<script src="js/list.min.js"></script>
 		<script>
+
+		var options = {
+  			valueNames: [ 'name', 'born' ]
+		};
+
+		var userList = new List('users', options);
 			// Create an instance of Meny
 			var meny = Meny.create({
 				// The element that will be animated in from off screen
