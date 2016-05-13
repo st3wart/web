@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Meny - A three dimensional and space efficient menu concept</title>
+
+		<meta name="description" content="A three dimensional and space efficient menu created with JavaScript and CSS 3.">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="viewport" content="width=800, user-scalable=no">
+
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="css/demo.css">
+		<style>
+			body {    
+			    margin: 0 !important;
+			    padding: 0 !important;
+			}
+			input[type="search"] {
+			  -webkit-appearance: textfield;
+			  -moz-box-sizing: content-box;
+			  -webkit-box-sizing: content-box;
+			  box-sizing: content-box;
+			}
+			input[type="search"]::-webkit-search-cancel-button,
+			input[type="search"]::-webkit-search-decoration {
+			  -webkit-appearance: none;
+			}
+			.annotated-list input {
+			  border-radius: 25px;
+			  padding: 7px 14px;
+			  background-color: transparent;
+			  border: solid 1px rgba(255, 255, 255, 0.2);
+			  width: 100%;
+			  box-sizing: border-box;
+			  color: #fff;
+			  margin-bottom: 5px;
+			}
+			.annotated-list .sort {
+			  
+			  
+			  padding: 5px 15px;
+			  border-radius: 25px;
+			  border: none;
+			  display: inline-block;
+			  color: #fff;
+			  text-decoration: none;
+			  background-color: rgba(255, 255, 255, 0.05);
+			  margin: 2px 0;
+			}
+			.annotated-list .sort:hover {
+			  text-decoration: none;
+			  background-color: rgba(255, 255, 255, 0.1);
+			}
+			.annotated-list .sort:focus {
+			  outline: none;
+			}
+			.annotated-list .sort:after {
+			  width: 0;
+			  height: 0;
+			  border-left: 4px solid transparent;
+			  border-right: 4px solid transparent;
+			  border-bottom: 4px solid transparent;
+			  content: "";
+			  position: relative;
+			  top: -10px;
+			  right: -4px;
+			}
+			.annotated-list .sort.asc:after {
+			  width: 0;
+			  height: 0;
+			  border-left: 4px solid transparent;
+			  border-right: 4px solid transparent;
+			  border-top: 4px solid #fff;
+			  content: "";
+			  position: relative;
+			  top: 11px;
+			  right: -4px;
+			}
+			.annotated-list .sort.desc:after {
+			  width: 0;
+			  height: 0;
+			  border-left: 4px solid transparent;
+			  border-right: 4px solid transparent;
+			  border-bottom: 4px solid #fff;
+			  content: "";
+			  position: relative;
+			  top: -9px;
+			  right: -4px;
+			}
+			.annotated-list .list {
+			  padding-top: 20px;
+			}
+			.annotated-list .list > div {
+			  padding: 10px 0;
+			  border-top: solid 1px rgba(255, 255, 255, 0.1);
+			}
+
+
+
+		</style>
+	</head>
+
+	<body >
+
+		<div class="meny">
+			<!-- <h2>More Experiments</h2>
+			<ul>
+				<li><a href="http://lab.hakim.se/avgrund/">Avgrund</a></li>
+				<li><a href="http://lab.hakim.se/radar/">Radar</a></li>
+				<li><a href="http://lab.hakim.se/forkit-js/">forkit.js</a></li>
+				<li><a href="http://lab.hakim.se/scroll-effects/">stroll.js</a></li>
+				<li><a href="http://lab.hakim.se/zoom-js">zoom.js</a></li>
+				<li><a href="http://lab.hakim.se/reveal-js">reveal.js</a></li>
+				<li><a href="http://itunes.apple.com/us/app/sinuous/id543097218">Sinuous for iOS</a></li>
+				<li><a href="http://hakim.se/experiments/css/domtree/">DOM Tree</a></li>
+				<li><a href="http://hakim.se/experiments/css/holobox/">Holobox</a></li>
+				<li><a href="http://hakim.se/experiments/html5/404/netmag.html">404</a></li>
+			</ul> -->
+			<div class="annotated-list" id="users">
+			    <input class="search" placeholder="Search Customers">
+			    <button class="sort" data-sort="name">Sort by name</button>
+			
+			  
+			    <div class="list"><div>
+			        <h3 class="name">Jason Sim</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Annie Chen</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Marina Tan</h3>
+			        
+			      </div><div>
+			        <h3 class="name">Grace Hoo</h3>
+			    
+			      </div>
+
+			      <div>
+			        <h3 class="name">Peter Lam</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Tan Keng Wai</h3>
+			    
+			      </div><div>
+			        <h3 class="name">Robin Hood</h3>
+			        
+			      </div><div>
+			        <h3 class="name">Scott Anderson</h3>
+			    
+			      </div>
+
+
+			  </div>
+ 		 	</div>
+		</div>
+
+		<!-- <div class="meny-arrow"></div> -->
+
+	<!-- 	<div class="contents" style="padding:0">
+			<img src="Prototype.png" width="1024" style="margin:0;padding:0"/>
+			
+		</div> -->
+
+		<div class="contents" style="position:fixed; height: 100%; width: 100%; top:0;left 0; padding:0">
+  			<img src='dashboard-generic.png' style="width: 100%" />
+		</div>
+
+		<script src="js/meny.js"></script>
+		<script src="js/list.min.js"></script>
+		<script>
+
+		var options = {
+  			valueNames: [ 'name', 'born' ]
+		};
+
+		var userList = new List('users', options);
+			// Create an instance of Meny
+			var meny = Meny.create({
+				// The element that will be animated in from off screen
+				menuElement: document.querySelector( '.meny' ),
+
+				// The contents that gets pushed aside while Meny is active
+				contentsElement: document.querySelector( '.contents' ),
+
+				// [optional] The alignment of the menu (top/right/bottom/left)
+				position: Meny.getQuery().p || 'left',
+
+				// [optional] The height of the menu (when using top/bottom position)
+				height: 200,
+
+				// [optional] The width of the menu (when using left/right position)
+				width: 260,
+
+				// [optional] Distance from mouse (in pixels) when menu should open
+				threshold: 40,
+
+				// [optional] Use mouse movement to automatically open/close
+				mouse: true,
+
+				// [optional] Use touch swipe events to open/close
+				touch: true
+			});
+
+			// API Methods:
+			// meny.open();
+			// meny.close();
+			// meny.isOpen();
+
+			// Events:
+			// meny.addEventListener( 'open', function(){ console.log( 'open' ); } );
+			// meny.addEventListener( 'close', function(){ console.log( 'close' ); } );
+
+			// Embed an iframe if a URL is passed in
+			if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
+				var contents = document.querySelector( '.contents' );
+				contents.style.padding = '0px';
+				contents.innerHTML = '<div class="cover"></div><iframe src="'+ Meny.getQuery().u +'" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
+			}
+		</script>
+
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+	</body>
+</html>
