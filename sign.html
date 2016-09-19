@@ -36,7 +36,11 @@
             
 	<script>
 	    $(document).ready(function() {
-	        $("#signatureApplicant").jSignature()
+	        var sign = $("#signatureApplicant").jSignature()
+	        
+	        window.clearSignature = function(){
+	        	sign.jSignature("reset");
+	        }
 	    })
 	</script>
 
